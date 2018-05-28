@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../../js/jquery-ui-1.12.1/jquery-ui.css">
+
+</head>
+<body>
+
+    <button id="btu" class="ui-button">添加选项卡</button>
+    <div id="dialog"></div>
+
+    <script>
+
+        $("#dialog").dialog({
+
+            //标题
+            title:'dialog',
+
+            //遮罩层,默认false
+            modal:true,
+
+            //当设定为true时，dialog初始化时自动打开，false隐藏
+            autoOpen:false,
+
+            //按钮事件
+            buttons:{
+                "close":function () {
+                    $(this).destroy()
+                }
+            },
+
+            //使用额外附加的主题
+            dialogClass:'alert',
+
+            //拖动,默认true
+            draggable:false,
+
+            //调整大小，默认true
+            resizable:false,
+
+            //关闭dialog的动画
+            hide:{
+                effect: "slideUp",//slideUp,explode
+                duration: 1000,
+            },
+
+            //显示dialog的动画
+            show:{
+                effect: "slideDown",//slideUp,explode
+                duration: 1000,
+            },
+
+            close:function () {
+                alert("dialog关闭了")
+            },
+
+            open:function () {
+                alert("dialog打开了")
+            },
+
+        })
+        $("#btu").on('click',function () {
+            $("#dialog").dialog('open');//close
+        })
+    </script>
+</body>
+</html>

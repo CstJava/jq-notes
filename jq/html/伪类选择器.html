@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/jquery.min.js"></script>
+    <title>Title</title>
+    <style>
+        #animation{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+
+        @keyframes play{
+            0%{
+                width:100px;
+            }
+            50%{
+                width:300px;
+            }
+            100%{
+                width:100px;
+            }
+        }
+    </style>
+</head>
+<body>
+<ul>
+
+    <li>1li</li>
+    <li>2li</li>
+    <li>3li</li>
+    <li>4li</li>
+    <li>5li</li>
+    <li>6li</li>
+    <li>7li</li>
+    <li>8li</li>
+    <li>9li</li>
+    <li class="hhh">hhhh</li>
+    <li>jjjj</li>
+    <h2>标题1</h2>
+    <h2>标题2</h2>
+    <h2>标题3</h2>
+    <div id="animation"></div>
+</ul>
+
+<form id="form" action="">
+    <input type="text">
+    <input type="password">
+    <input type="radio">
+    <input type="checkbox">
+    <input type="image">
+    <input type="file">
+</form>
+<script>
+    $(function(){
+        //:first : 匹配第一个元素 $("li:first")
+        $("li:first").css("color","blue");
+        //:last : 匹配最后一个元素 $("li:first")
+        $("li:last").css("color","yellow");
+        //:not: 去除所有与给定选择器匹配的元素 $("div:not(.class)")
+        $("li:not(.hhh)").css("width","200px");
+        //:even: 匹配所有索引值为偶数的元素 $("div:even")
+        $("li:even").css("border","1px solid black");
+        //:odd: 匹配所有索引值为奇数的元素 $("div:odd")
+        $("li:odd").css("background","lightblue");
+        // :eq : 匹配一个给定索引值的元素 $("div:eq(0)")
+        $("li:eq(5)").css("font-size","30px");
+        // :gt : 匹配所有大于给定索引值的元素 $("div:gt(1)")
+        $("li:gt(7)").css("height","50px");
+        // :lt : 匹配所有小于给定索引值的元素 $("div:lt(1)")
+        $("li:lt(3)").css("box-shadow","0 0 5px black");
+        // :header : 匹配如h1,h2,h3...的元素 $(":header")
+        $(":header").css("background","yellow");
+        //:animated : 匹配所有正在执行动画效果的元素 $(":animated")
+        function animation(){
+            $("#animation").animate({"width":"300px"});
+            $("#animation").animate({"width":"100px"},animation);
+        }
+        animation();
+
+        setTimeout(function(){
+            $(":animated").css("background","yellow");
+        },1000)
+
+
+        $("li:nth-child(2n+1)").css("margin-left","30px");
+
+        //表单的伪类选择器
+        $("#form :input").css("display","block");
+        $("#form :text").css("border","2px solid black");
+        $("#form :password").css("background","lightblue");
+        $("#form :radio").css("border","2px solid black");
+        $("#form :checkbox").css("border","2px solid black");
+        $("#form :image").css("border","2px solid yellow");
+        $("#form :text").css("border","2px solid black");
+        $("#form :file").css("border","2px solid black");
+    })
+</script>
+</body>
+</html>

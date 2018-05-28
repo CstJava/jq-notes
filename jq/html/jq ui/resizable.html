@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../js/jquery-ui-1.12.1/jquery-ui.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <style>
+        #resizable{
+            width: 200px;
+            height:200px;
+            background: #007fff;
+            border: 5px solid black;
+        }
+
+        #resizableParent{
+            width: 400px;
+            height:400px;
+            background: goldenrod;
+        }
+    </style>
+</head>
+<body>
+
+<div id="resizableParent">
+    <div id="resizable">
+        <p id="p"></p>
+    </div>
+</div>
+<script>
+
+    //缩放事件
+    $("#resizable").resizable({
+        //缩放元素被改变尺寸时调用函数
+        resize:function () {
+            $("#p").html("缩放事件进行...")
+        },
+        //缩放元素开始改变尺寸时调用函数
+        start:function () {
+            $("#p").html("缩放事件开始...")
+        },
+        //缩放元素结束改变尺寸时调用函数
+        stop:function () {
+            $("#p").html("缩放事件结束...")
+        },
+
+        //设置缩放大小范围
+        maxHeight:500,
+        minHeight:100,
+        maxWidth:500,
+        minWidth:100,
+
+        //缩放动画效果
+        // animate:true, //默认false
+
+        //隐藏尺寸改变手柄,直到鼠标指向该位置为止
+        autoHide:true, //默认false
+
+        //限制缩放的尺寸变化和方向，默认为false
+        // grid:[20,20]
+
+        //限制缩放尺寸不能超过指定容器元素的边界
+        containment:"#resizableParent"//"parent"
+    });
+
+
+</script>
+</body>
+</html>

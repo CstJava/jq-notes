@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../../js/jquery-ui-1.12.1/jquery-ui.css">
+    <title>Title</title>
+    
+</head>
+<body>
+<ul id="sortable" style="background:cornflowerblue;">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <div>7</div>
+    <div>8</div>
+</ul>
+<p id="tips">事件</p>
+<p id="result">结果是否改变</p>
+<script>
+    //排序
+    $("#sortable").sortable({
+        //限制排序元素只能沿某个方向移动，x/y，默认值none
+        axis:"y",
+
+        //指定不能够被排序的元素，默认值为input
+        cancel:"input,div",
+
+        //限制排序组件的条目在拖动时不能超出容器
+        // containment:"#sortable",//parent,window,document...
+
+        //定义在拖动光标时的css，默认值none
+        cursor:"pointer",
+
+        //默认值[]
+        grid:"",//[10,10]
+
+        //指定可以排序的条目，默认为所有子元素>*
+        items:">*",
+
+        //指定被排序元素的透明度，默认值1
+        opacity:0.5,
+
+        //指定用于放置排序元素的空白位置的css样式类，默认值none
+        placeholder:"color:red",
+
+        //在向新位置移动排序条目时激活动画，默认值为true
+        revert:true,
+
+        //当排序组件达到可视范围的边缘时让页面卷页，默认值true
+        scroll:false,
+
+        //排序条目或者助手元素在拖动时的z-index
+        zIndex:1,
+
+        //在排序开始时执行回调函数
+        start:function () {
+            $("#tips").html("start事件");
+        },
+
+        //在排序发生时执行回调函数
+        sort:function () {
+            $("#tips").html("sort事件");
+        },
+
+        //在排序结束时执行回调函数
+        stop:function () {
+            $("#tips").html("stop事件");
+        },
+
+        //在连接列表间开始排序时执行回调函数
+        activate:function () {
+            $("#tips").html("activate事件");
+        },
+
+        //排序过程中，排序元素的DOM位置发生改变时执行回调函数
+        change:function () {
+            $("#tips").html("change事件");
+        },
+
+        //当待排序元素从连接列表中移出时执行回调函数
+        out:function () {
+            $("#tips").html("out事件");
+        },
+
+        //当排序结束后，且DOM位置发生变化时执行回调函数
+        update:function () {
+            $("#result").html("update事件,结果改变了");
+        }
+
+    })
+</script>
+</body>
+
+</html>

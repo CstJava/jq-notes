@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-ui-1.12.1"></script>
+    <link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: #007fff;
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <button id="btu" class="ui-button">slideToggle</button>
+<script>
+    $("div1").on("click",function () {
+        //show()显示
+        // $(this).show(500);
+        //hide()隐藏
+        // $(this).hide(500);
+        //toggle()显示隐藏切换
+        // $(this).toggle(300);
+
+    })
+    
+    $("#btu").on("click",function () {
+        //slideDown()和slideUp
+        //slideToggle()纵向显示隐藏
+        // $("#div1").slideToggle(500);
+
+        //fadeIn()和fadeOut()
+        //fadeTo()设置透平度,仅能作用于显示的元素
+        // $("#div1").fadeTo(500,0.5);
+        //fadeToggle()透明度显示隐藏
+        // $("#div1").fadeToggle(500);
+
+        //animate()自定义动画
+        $("#div1").animate({
+                width:"300px",
+                height:"300px"
+            },
+            {
+                duration:500,
+                //complete动画完成调用函数
+                complete:function () {
+                    $(this).append("<p>callback效果</p>")
+                },
+                //queue，次动画是否加入队列，默认true
+                queue:false
+            }
+        ).animate({
+                opacity:0.5,
+                background:"black"//background无效
+            },
+            {
+                duration:500
+            }
+        ).animate({
+                width:"100px",
+                height:"100px"
+            },
+            {
+                duration:500
+            }
+        )
+    })
+    
+</script>
+</body>
+</html>

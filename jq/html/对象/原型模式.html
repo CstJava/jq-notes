@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+
+<script>
+
+    //使用构造函数定义一个类
+    function Book() {
+    }
+    Book.prototype.title = 'javascript'
+    Book.prototype.pages = 200;
+    Book.prototype.what = function() {
+        alert(this.title+this.pages)
+    };
+
+    var book1 = new Book()
+    var book2 = new Book()
+
+    book1.title = 'new javascript'
+
+    console.log(book1.title)  //new javascript
+    console.log(book2.title)  //javascript
+
+    //如果原型属性的值为引用类型时，如果在一个对象实例中修改该属性值，将会影响所有实例
+    Book.prototype.o = {
+        x : 1,
+        y : 2
+    }
+
+    book1.o.x = 3;
+    console.log(book1.o.x)  //3
+    console.log(book2.o.x)  //3
+
+</script>
+</body>
+</html>

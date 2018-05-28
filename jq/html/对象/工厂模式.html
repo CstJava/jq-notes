@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+
+<script>
+    function  wrap1() {
+        var book = new Object();
+        book.title = 'JavaScript类';
+        book.pages = 200;
+        book.what = function () {
+            alert(this.title+this.pages)
+        }
+        return book;
+    }
+
+    //由于在函数wrap1()内部已经调用了new运算符，所以模具(伪造构造函数)外面这个new运算符就被忽略
+    var book1 = wrap1();
+    var book2 = wrap1();
+
+    //带有参数的工厂模式
+    function  wrap2() {
+        var book = new Object();
+        book.title = title;
+        book.pages = page;
+        book.what = function () {
+            alert(this.title+this.pages)
+        }
+        return book;
+    }
+
+    var book1 = wrap2('java',100);
+    var book2 = wrap2('javascript',300)
+
+    //分离方法的工厂模式
+    function  wrap3(title,pages) {
+        var book = new Object();
+        book.title = title;
+        book.pages = pages;
+        book.what = what;
+        return book;
+    }
+    
+    function what() {
+        alert(this.title+this.pages)
+    }
+    //通过分离方法，从而改进了重复创建相同函数的弊端，在模具中直接引用方法的指针，实例直接调用公共方法，节省大量资源
+
+</script>
+</body>
+</html>

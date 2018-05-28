@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="发送服务器请求">
+    <script>
+        $("input").on("click",function () {
+            $.ajax({
+                url : "json",
+                type:"post",
+                dataType:"json",
+                success:function (data) {
+                   alert(data[0].name)
+
+                }
+            })
+        })
+
+
+    </script>
+</body>
+</html>

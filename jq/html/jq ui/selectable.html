@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../../js/jquery-ui-1.12.1/jquery-ui.css">
+    <title>Title</title>
+    
+</head>
+<body>
+<ul id="selectable">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+<script>
+    //选择事件
+    $("#selectable").selectable({
+        //选择交互结束时，触发回调函数
+        selected:function () {
+            $(".ui-selected").append("<p>selected事件</p>")
+        },
+
+        //选择交互过程中触发
+        selecting:function () {
+            $(".ui-selecting").append("<p>selecting事件</p>")
+        },
+
+        //当取消选中某一个元素后触发此事件
+        unselected:function(){
+            $(".ui-selecting").append("<p>unselected事件</p>")
+        },
+
+        //选择交互开始触发
+        start:function () {
+            $(".ui-selecting").append("<p>start事件</p>")
+        },
+
+        //选择交互结束触发
+        stop:function () {
+            $(".ui-selecting").append("<p>stop事件</p>")
+        }
+    })
+</script>
+</body>
+
+</html>

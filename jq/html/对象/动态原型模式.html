@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+
+<!--
+    从面向对象的设计原则来思考，所有成员都被封装在类结构体中
+
+    ！：动态原型模式和构造原型模式在性能上是等价的，目前使用最广泛的是构造原型模式
+-->
+<script>
+
+    function Book(title,pages) {    //构造函数模式设计
+        this.title = title;
+        this.pages = pages;
+        Book.prototype.what = function() {      //原型模式设计，位于类的内部
+            alert(this.title+this.pages)
+        };
+    }
+
+    var book1 = new Book('java',200)
+    var book2 = new Book('javascript',300)
+
+    book1.what();
+    book2.what();
+
+    //当每次实例化对象时，类Book中包含的原型方法就会被创建一次，使用分支结构封装该方法
+    function Book(title,pages) {    //构造函数模式设计
+        this.title = title;
+        this.pages = pages;
+        if(Book.isLock == 'undefined'){
+            Book.prototype.what = function() {      //原型模式设计，位于类的内部
+                alert(this.title+this.pages)
+            };
+            Book.isLock = true;
+        }
+    }
+
+
+</script>
+</body>
+</html>

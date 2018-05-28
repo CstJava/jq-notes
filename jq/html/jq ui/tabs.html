@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../../js/jquery-ui-1.12.1/jquery-ui.css">
+
+    <style>
+            .content{
+                background: #007fff;
+            }
+        </style>
+</head>
+<body>
+
+    <button class="ui-button">添加选项卡</button>
+    <div id="tabs">
+        <ul id="tabsUl">
+            <li><a href="#tabs-1">新闻</a></li>
+            <li><a href="#tabs-2">社区</a></li>
+            <li><a href="#tabs-3">联系</a></li>
+        </ul>
+
+        <div id="tabs-1" class="content">新闻</div>
+        <div id="tabs-2" class="content">社区</div>
+        <div id="tabs-3" class="content">练习</div>
+
+    </div>
+
+    <script>
+        var tabsId=3;
+        $(".ui-button").on("click",function () {
+            $("#tabsUl").append("<li><a href='#tabs-"+(++tabsId)+"'>新选项卡</a></li>");
+            $("#tabs").append("<div id='tabs-"+(tabsId)+"' class='content'>新选项卡内容</div>")
+            $("#tabs").tabs( "refresh" );
+        })
+
+        $("#tabs").tabs({
+            //触发显示内容的事件，默认为click
+            event:"click",//mouseover
+
+            //折叠内容,默认false
+            collapsible:false,
+
+            //禁用选项卡
+            disabled:[2,2],
+
+            //激活选项卡
+            enable:[2,2],
+
+            //加载远程选项卡
+            load:1,
+
+            //添加选项卡执行回调函数
+            create:function(event,ui){
+                alert("选项卡添加事件")
+            },
+
+            //选项卡被选中时执行回调函数
+            activate:function (event,ui) {
+                alert("选项卡选中事件")
+            },
+        });
+
+    </script>
+</body>
+</html>

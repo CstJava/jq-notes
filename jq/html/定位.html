@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/jquery.min.js"></script>
+    <title>Title</title>
+    <style>
+        div{
+            width: 80%;
+            height: 80%;
+            background: #007fff;
+            margin: 20px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 300px;height: 300px;background: white;position: relative">
+    <div><div><div><div id="div" style="margin-left: 300px;"></div></div></div></div>
+</div>
+<a href="www.baidu.com">百度一下</a>
+<script>
+    //offset() 绝对定位，相对于浏览器左上角
+    //position() 相对定位，相对于父元素
+    $("#div").on("click",function () {
+        $(this).html("offsetLeft:"+$(this).offset().left+" offsetTop:"+$(this).offset().top+"\n"
+        +"positionLeft:"+$(this).position().left+" positionTop:"+$(this).position().top
+        );
+    })
+
+    //  event.stopPropagation()，取消事件冒泡
+    $("div").on("mouseover",function (event) {
+        event.stopPropagation();
+        $(this).css("border","2px solid green")
+    }).on("mouseout",function(event){
+        $(this).css("border","2px solid black")
+    })
+    
+    //  event.preventDefault()，取消默认事件
+    $("a").on("click",function (event) {
+        event.preventDefault();
+    })
+
+    //one， 只执行一次
+    $("#div").one("click",function () {
+        alert("我只执行一次");
+    })
+</script>
+</body>
+</html>

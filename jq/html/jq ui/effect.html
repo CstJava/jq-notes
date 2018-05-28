@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../../js/jquery-ui-1.12.1/jquery-ui.css">
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: #007fff;
+        }
+
+        .addClass{
+            width: 300px;
+            height: 300px;
+            background: #003eff;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="addClass">addClass</h1>
+    <h1 id="removeClass">removeClass</h1>
+    <div id="div1"></div>
+
+    <h1 id="blind">blind</h1>
+    <div id="div2"></div>
+
+    <h1 id="bounce">bounce</h1>
+    <div id="div3"></div>
+
+    <h1 id="clip">clip</h1>
+    <div id="div4"></div>
+
+    <h1 id="drop">drop</h1>
+    <div id="div5"></div>
+
+    <h1 id="explode">explode</h1>
+    <div id="div6"></div>
+
+    <h1 id="fade">fade</h1>
+    <div id="div7"></div>
+
+    <h1 id="fold">fold</h1>
+    <div id="div8"></div>
+
+    <h1 id="puff">puff</h1>
+    <div id="div9"></div>
+
+    <h1 id="pulsate">pulsate</h1>
+    <div id="div10"></div>
+
+    <h1 id="scale">scale</h1>
+    <div id="div11" style="border: 5px solid black;"></div>
+
+    <h1 id="shake">shake</h1>
+    <div id="div12"></div>
+
+    <h1 id="size">size</h1>
+    <div id="div13"></div>
+
+    <h1 id="slide">slide</h1>
+    <div id="div14"></div>
+
+    <h1 id="toggleClass">toggleClass</h1>
+    <div id="div15"></div>
+    <script>
+
+        //addClass
+        $('#addClass').on('click',function () {
+            $('#div1').addClass('addClass',500,'easeOutBounce')
+        })
+
+        //removeClass
+        $('#removeClass').on('click',function () {
+            $('#div1').removeClass('addClass',500,'easeOutBounce')
+        })
+
+        //百叶窗特效
+        $("#blind").on('click',function () {
+            //direction : up,down,left,right,vertical,horizontal
+            $('#div2').toggle('blind',{
+                direction:'right'
+            })
+        })
+
+        //反弹特效
+        $("#bounce").on('click',function () {
+            $('#div3').toggle('bounce',{
+                distance :30,//反弹的最大距离，默认20
+                times : 7 //反弹的次数，默认5
+            })
+        })
+
+        //剪辑特效(从两边显示/隐藏)
+        $("#clip").on('click',function () {
+            $('#div4').toggle('clip')
+        })
+
+        //拉拽特效隐藏或显示一个元素，并使用通过淡入或淡出效果使它向一个方向滑动。
+        $("#drop").on('click',function () {
+            $('#div5').toggle('drop',{
+                //left,right,up,down,默认left
+                direction:'right'
+            })
+        })
+
+        //爆炸特效
+        $("#explode").on('click',function () {
+            $('#div6').toggle('explode',{
+                //分裂数量,默认值9
+                pieces:45
+            })
+        })
+
+        //淡入淡出特效
+        $("#fade").on('click',function () {
+            $('#div7').toggle('fade')
+        })
+
+        //折叠特效
+        $("#fold").on('click',function () {
+            $('#div8').toggle('fold',{
+                //折叠元素的尺寸，默认15
+                size:20
+            })
+        })
+
+        //拉伸放大特效
+        $("#puff").on('click',function () {
+            $('#div9').toggle('puff',{
+                //放大百分比，默认150
+                percent:300
+            })
+        })
+
+        //闪烁特效
+        $("#pulsate").on('click',function () {
+            $('#div10').toggle('pulsate',{
+                //闪烁次数，默认5
+                times:10
+            })
+        })
+
+        //缩放特效
+        $("#scale").on('click',function () {
+            $('#div11').toggle('scale',{
+                //确定元素的哪个区域将被缩放: "both", "box", "content"
+                //Box值缩放元素的border和padding; content值缩放元素内部的所有内容。
+                scale:'box',
+                //缩放的百分比
+                percent:50
+            })
+        })
+
+        //抖动特效
+        $("#shake").on('click',function () {
+            $('#div12').toggle('shake',{
+                //抖动方向，left/right左右，up/down上下，默认left
+                direction:'up',
+                //抖动距离，默认20
+                distance:30,
+                //抖动次数，默认3
+                times:10
+            })
+        })
+
+        //设置元素宽高
+        $("#size").on('click',function () {
+            $('#div13').toggle('size',{
+                //改变后的宽高
+                to:{
+                    width:300,
+                    height:100
+                },
+                //特效起始的方向，默认left
+                origin:'right'
+            },1000)
+        })
+
+        //滑动特效
+        $("#slide").on('click',function () {
+            $('#div14').toggle('slide',{
+                //滑动方向,默认left
+                direction:'right',
+                //特效执行的距离
+                // distance :200
+            })
+        })
+
+        //切换css
+        $("#toggleClass").on('click',function () {
+            $('#div15').toggleClass('addClass',1000)
+        })
+    </script>
+</body>
+</html>

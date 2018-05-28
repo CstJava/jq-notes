@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../../js/jquery-ui-1.12.1/jquery-ui.css">
+    <style>
+        .ui-slider-range{
+            background: #f1a899;
+        }
+
+        .ui-state-active:active{
+            /*background: #777620;*/
+        }
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <label for="value">当前值:</label>
+        <input type="text" id="value">
+        <p>滑块事件</p>
+    </div>
+    <div id="slider"></div>
+<script>
+
+    $("#slider").slider({
+
+        animate:'slow',
+
+        //禁用滑块，默认false
+        // disabled:true,
+
+        //滑块最大值/最小值，默认100
+        max:50,
+        min:20,
+
+        //确定滑块水平还是垂直移动,默认horizontal水平
+        // orientation:"vertical",//垂直
+
+        //滑块是否是一个范围，默认false
+        range:true,
+
+        //定义slider的单位步长
+        step:2,
+
+        //如果只有一个手柄，指定value值
+        // value:26,
+
+        //如果有多个操作手柄，如果range为true，values长度至少为2
+        values:[10,25],
+
+        //滑块事件Events
+        //当点击滑块，松开鼠标时触发
+        change:function(){
+            $("p").html("change事件")
+        },
+
+        //滑块组件被创建时触发
+        create:function(){
+            $("p").html("create事件")
+        },
+        //滑块位置发生改变时触发
+        slide:function (event,ui) {
+            $("p").html("slide事件")
+            $("#value").val(ui.value)
+        },
+
+        //当用户开始滑动滑块时触发
+        start:function () {
+            $("p").html("start事件")
+        },
+
+        //当用户开始滑动滑块后触发
+        stop:function () {
+            $("p").html("stop事件")
+        }
+    })
+</script>
+</body>
+</html>

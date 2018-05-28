@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../../js/jquery-ui-1.12.1/jquery-ui.css">
+
+</head>
+<body>
+
+    <button class="ui-button">添加选项卡</button>
+    <div id="accordion">
+        <h1>新闻</h1>
+        <div>新闻</div>
+
+        <h1>社区</h1>
+        <div>社区</div>
+
+        <h1>联系</h1>
+        <div>练习</div>
+
+
+
+    </div>
+
+    <script>
+
+
+        $("#accordion").accordion({
+            //选择初始打开的抽屉
+            active:1,
+
+            //触发事件,默认click
+            event:'click',//mouseover
+
+            //打开抽屉事件
+            activate:function (event,ui) {
+                alert('activate事件')
+            },
+
+            //icons
+            icons:{
+                "header": "ui-icon-plus",
+                "activeHeader": "ui-icon-minus"
+            },
+
+            //折叠手风琴,默认false
+            collapsible:true
+        });
+
+    </script>
+</body>
+</html>

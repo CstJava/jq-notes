@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+<!--
+
+
+
+-->
+
+<body>
+
+<script>
+
+    //1.构造对象属性(静态属性)
+    //构造对象就是类
+    function Point(x,y) {
+        //实例对象属性
+        this.x= x;
+        this.y= y;
+        //实例对象方法
+        this.c = function () {
+            console.log('c function()')
+        }
+    }
+
+    Point.name='类属性';
+
+    //构造对象不能直接被引用，必须使用new运算符来运算
+    var p1 = new Point(100,200)
+    var p2 = new Point(200,300)
+
+    console.log(Point.name); //直接读取构造对象的属性
+    console.log(p1.name)    //不能通过实例对象来读取构造对象的属性
+
+    //对于构造对象的属性，实例对象是不能继承的（name），因此也不能够通过实例对象来读取
+    //也不能通过构造对象来读取实例对象的属性
+
+    //2.构造对象方法(静态方法)
+    Point.saying = function () {
+        console.log('类方法')
+    }
+    Point.saying();
+
+    //调用实例方法
+    p1.c()
+</script>
+</body>
+</html>

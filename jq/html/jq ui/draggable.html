@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../../js/jquery-ui-1.12.1/jquery-ui.css">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: #007fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>拖动事件侦察</h1>
+    <div id="draggable"></div>
+    <p></p>
+    <h1>限定X轴拖动</h1>
+    <div id="draggableX"></div>
+    <h1>限定Y轴拖动</h1>
+    <div id="draggableY"></div>
+    <h1>限定在父元素内拖动</h1>
+    <div style="width: 500px;height: 500px;background: black;border: 5px solid blue" id="draggableParent">
+        <div id="draggableSon"></div>
+    </div>
+    <h1>设置移动对齐方式</h1>
+    <div style="width: 500px;height: 500px;background: #f1a899;border: 5px solid blue" id="draggableParent2">
+        <div id="draggableSon2"></div>
+    </div>
+    <h1>投放对象</h1>
+    <div id="droppable" style="background: #777620;border: 5px solid black">
+        <h2 id="droppableText"></h2>
+    </div>
+    <div id="draggable2"></div>
+<script>
+    //拖动事件侦查
+    $("#draggable").draggable({
+        start:function () {
+            $("p").html("开始拖动");
+        },
+        drag:function () {
+            $("p").html("正在拖动");
+        },
+        stop:function () {
+            $("p").html("结束拖动");
+        }
+    })
+
+    //设置移动范围
+    //限定X轴移动
+    $("#draggableX").draggable({
+        axis:"x"
+    })
+    //限定Y轴移动
+    $("#draggableY").draggable({
+        axis:"y"
+    })
+    //限定在某区域内移动
+    $("#draggableSon").draggable({
+        containment:"#draggableParent",//"parent"...
+    })
+    //移动自动对齐方式
+    $("#draggableSon2").draggable({
+        //设置在靠近#draggableParent2时自动对齐边框
+        snap:"#draggableParent2",
+        //设置在靠近#draggableParent2时自动对齐边框外沿，元素在外部
+        snapMode:"inside",//inside,outside,默认both
+        //限制移动位移在20*20网格
+        // grid:[20,20]
+    })
+
+    //投放对象
+    $("#droppable").droppable({
+        //设置投放对象所能接受的元素
+        accept:"#draggable2",
+        //阻止事件连环调用
+        greedy:true,
+        //设置在可接受的拖动元素拖动时，投放对象的样式类
+        activeClass:"",
+        //拖动对象被移动到投放对象时的样式类
+        hoverClass:"",
+        //检测拖动对象是否完成投放，默认interest
+        tolerance:"touch",//fit完全处于投放对象的边界之内，pointer鼠标指针接触到投放边界，touch投放对象与拖动对边边界接触
+        //所接收的拖动对象投放到投放对象中触发事件
+        drop:function(event,ui){
+            $(this).css("background","blue")
+            $("#droppableText").html("投放事件");
+        },
+        //所接收的拖动对象移动到投放对象中触发事件
+        over:function(event,ui){
+            $(this).css("background","yellow")
+            $("#droppableText").html("接触事件");
+        },
+        //所接收的拖动对象离开到投放对象中触发事件
+        out:function(event,ui){
+            $(this).css("background","red")
+            $("#droppableText").html("离开事件");
+        }
+    });
+    $("#draggable2").draggable();
+</script>
+</body>
+
+</html>

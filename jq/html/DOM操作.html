@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <a>sss</a>
+    <input type="checkbox">
+<script>
+    $("div").append("<div></div>");
+
+    $("div").remove();
+    $("div").empty();
+    $("div").clone(true);
+    $("div").clone(true).insertAfter("div");
+    $("div").clone(true).insertBefore("div");
+
+    //包裹内容
+    //外包
+    $("a").wrap("<ul><li></li></ul>")
+
+    //内包
+    $("body").wrapInner("<div></div>")
+
+    //卸包
+    $("a").unwrap();
+
+    //属性操作
+    //prop多用来操作disable和checked,selected
+    $("input:checkbox").prop({
+        disable:true,
+        checked:false
+    });
+
+    //attr多用来设置id 和class等属性
+    $("div").attr("class","blue");
+
+    //获取属性
+    $("input").prop("checked");
+    $("div").attr("class");
+
+    //删除属性
+    $("div").removeAttr("class");
+</script>
+</body>
+</html>

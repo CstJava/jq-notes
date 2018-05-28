@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script src="../js/jquery-ui-1.12.1"></script>
+    <link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+<buttun id="reversebtu" class="ui-button">reverser</buttun>
+<script>
+
+    //trim(),去除前后空格
+    // var text = "   去除前后空格    ";
+    // alert("哈哈哈"+text.trim()+"Hhh")
+
+    //$.param()将jQuery对象序列化
+    // var param = {
+    //     name:"张三",
+    //     age:18
+    // }
+    // alert($.param(param));
+
+    //$.makeArray()生成数组
+    //reverse()
+    // $("#reversebtu").on('click',function () {
+    //     var liList = $.makeArray($("li"));
+    //     $("ul").html(liList.reverse())
+    // })
+
+    //$.grep()对数组进行筛选
+    // var arr = [1,2,3,4,5,6,7,8,9];
+    // arr = $.grep(arr,function (value,index) {
+    //     return value>=5;
+    // })
+    // alert(arr);
+
+    //$.map()对数组进行转换
+    // var arr = [1,2,3,4,5,6,7,8,9];
+    // arr = $.map(arr,function (value) {
+    //     // 实现grep的功能
+    //     // return value>=5?value:null;
+    //     //将数组元素扩大一倍
+    //     return value*2;
+    // })
+    // alert(arr);
+
+    //$.merge()对数组合并，合并后的数组传到arr1并返回新数组
+    // var arr1 = [1,2,3,4,5,6,7,8,9];
+    // var arr2 = [1,2,3,4,5,6,7,8,9];
+    // //js原生方法
+    // // var arr = arr1.concat(arr2);
+    // var arr = $.merge(arr1,arr2);
+    // alert(arr1);
+    // alert(arr);
+
+    //$.unique数组去重
+    var arr = [1,2,3,4,5,6,7,8,9];
+    $.merge(arr,arr);
+    arr = $.unique(arr);
+    alert(arr);
+
+</script>
+</body>
+</html>

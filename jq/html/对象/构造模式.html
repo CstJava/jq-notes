@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+
+<script>
+    
+    function Book(title,pages) {
+        this.title = title;
+        this.pages = pages;
+        this.what = what;
+    }
+
+    function what() {
+        alert(this.title+this.pages)
+    }
+
+    //由于函数Book内没有调用new运算符，所以需要new来创建对象
+    var book1 = new Book('java',200)
+    var book2 = new Book('javascript',300)
+</script>
+</body>
+</html>

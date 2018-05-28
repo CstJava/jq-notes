@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.min.js"></script>
+    <style>
+        div{
+            width: 100px;
+            height:100px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="blue"></div>
+    <div class="red"></div>
+    <div></div>
+    <div></div>
+    <div>
+        <li>li</li>
+    </div>
+    <div class="not"></div>
+    <script>
+        //类过滤器
+        $("div").on("click",function(){
+            if($(this).hasClass("blue")){
+                $(this).css("background","blue")
+            }
+        })
+
+        //下标过滤
+        $("div").eq(3).css("background","green");
+
+        //表达式过滤
+        $("div").filter(".red").css("background","red");
+
+        $("div").has("li").css("background","yellow");
+
+        //清洗
+        $("div").not(".not").css("border","2px solid #375465")
+
+        //截取
+        $("div").slice(0,3).css("box-shadow","0 0 20px orange")
+
+        //查找
+        $("div").next();
+        $("div").nextAll();
+        $("div").prev();
+        $("div").prevAll();
+
+        $(".blue").children("li");
+        $(".red").find("li");
+
+        $(".red").parent("li");
+        $(".red").parents("li");
+    </script>
+</body>
+</html>

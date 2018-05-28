@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.min.js"></script>
+    <style>
+        .color1{
+            width: 100px;
+            height: 100px;
+            background: #003eff;
+            margin: 20px;
+        }
+        .color2{
+            width: 100px;
+            height: 100px;
+            background: #777620;
+            margin: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+
+<div id="div"></div>
+<button>btu</button>
+<script>
+    $(function () {
+        //添加class
+        $("div").addClass("color1");
+        //删除class
+        // $("div").removeClass("color1").addClass("color2");
+        //点击切换class
+        $("div").on("click",function () {
+            $(this).toggleClass("color2");
+        })
+        //判断class
+        $("div").hasClass("color1");
+
+        $("button").on("click",function(){
+            $("#div").toggle(200)
+        })
+        
+        $("#div").hover(function () {
+            $(this).css("background","brown")
+        },function(){
+            $(this).css("background","blue")
+        })
+
+    })
+
+</script>
+</body>
+</html>

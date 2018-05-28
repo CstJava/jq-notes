@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/jquery.min.js"></script>
+
+</head>
+<body>
+
+<script>
+
+    function A(x) {
+        this.x1 = x;
+        this.get1 = function () {
+            return this.x1;
+        }
+    }
+
+    function B(x) {
+        this.x2 = x;
+        this.get2 = function () {
+            return this.x2+this.x2;
+        }
+    }
+    B.prototype = new A(1);
+    function C(x) {
+        this.x3 = x;
+        this.get3 = function () {
+            return this.x3*this.x3;
+        }
+    }
+    C.prototype = new B(2);
+
+    var b = new B(2);
+    var c = new C(3);
+
+    console.log(b.x1)       //1
+    console.log(c.x1)       //1
+    console.log(c.get3())   //9
+    console.log(c.get2())   //4
+
+</script>
+
+</body>
+</html>

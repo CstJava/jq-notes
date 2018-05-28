@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+
+<!--
+    构造原型模式正是为了解决原型模式而诞生的一种混合设计模式
+    具体的方法为：对于可能会相互影响的属性，并且希望动态传递参数的属性，则拆分出来使用构造函数模式进行设计
+    对于不需要个性，反而希望共享，且又不会相互影响的方法或属性，则单独使用原型模式来设计
+
+-->
+<script>
+
+    function Book(title,pages) {    //构造函数模式设计
+        this.title = title;
+        this.pages = pages;
+    }
+
+    Book.prototype.what = function() {      //原型模式设计
+        alert(this.title+this.pages)
+    };
+
+    var book1 = new Book('java',200)
+    var book2 = new Book('javascript',300)
+
+    book1.what();
+    book2.what();
+
+
+</script>
+</body>
+</html>
